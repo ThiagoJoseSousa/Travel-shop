@@ -1,8 +1,8 @@
-import {render} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import App from './App';
 
 
 it('tests if header shows up', () => {
-    const page =render (<App/>)
-    expect(page.getByText('Travel shop')).toBeTruthy()
+    render (<App/>)
+    expect(screen.getByText('Travel shop')).toBeTruthy()
 })
