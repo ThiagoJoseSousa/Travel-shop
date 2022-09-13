@@ -8,11 +8,18 @@ const Products = (itemList) => {
     { 
     itemList.itemList.productItems.map((productItem)=> (
         <div className="card" id={productItem.id}>
-            <div> {//require is synchronous
-            }
+            <div> 
                 <img className="product-image" src={productItem.image
                 } alt={productItem.name}></img>
             </div>
+            <div>
+                <h3 className="product.name">{productItem.name}</h3>
+            </div> 
+
+           <div className="product-price">${productItem.price}</div>
+                <div>
+                    <button className="product-add-button">Add to Cart</button>
+                </div>
         </div>
     ))
     
