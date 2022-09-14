@@ -1,12 +1,12 @@
 import React from "react";
 
 //import '../assets/Products.css'
-const Products = (itemList) => {
- // passing props creates an outer object. 
+const Products = ({itemList, handleAddProduct}) => {
+ // passing props creates an outer object if they arent destructured on receive 
     return ( <div className="products">
         
     { 
-    itemList.itemList.productItems.map((productItem)=> (
+    itemList.map((productItem)=> (
         <div className="card" id={productItem.id}>
             <div> 
                 <img className="product-image" src={productItem.image
@@ -18,7 +18,7 @@ const Products = (itemList) => {
 
            <div className="product-price">${productItem.price}</div>
                 <div>
-                    <button className="product-add-button">Add to Cart</button>
+                    <button className="product-add-button" onClick={() => handleAddProduct(productItem)}>Add to Cart</button>
                 </div>
         </div>
     ))

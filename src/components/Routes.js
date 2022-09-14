@@ -4,12 +4,12 @@ import {Route, Routes} from "react-router-dom"
 import Signup from "./Signup";
 import Cart from "./Cart";
 
-const RoutesComp = (itemList) => {
+const RoutesComp = ({productItems, cartItems, handleAddProduct}) => { // we destructure the props instantly LOL 
     return <div>
         <Routes>
-            <Route path='/' element={<Products itemList={itemList}/>}  />
+            <Route path='/' element={<Products itemList={productItems} handleAddProduct={handleAddProduct}/>}  />
             <Route path='/signup' element={<Signup/>}/>
-            <Route path='/cart' element={<Cart/>}/>
+            <Route path='/cart' element={<Cart cartItems={cartItems} handleAddProduct={handleAddProduct}/>}/>
         </Routes>
 
     </div>
