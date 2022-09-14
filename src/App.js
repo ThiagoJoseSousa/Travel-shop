@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import {BrowserRouter as Router} from "react-router-dom";
 import RoutesComp from "./components/Routes";
 import { useState } from "react";
-import Products from "./components/Products";
+
 
 function App() {
   // const [productItems] = {itemList}; destructuring is for separing elements within
@@ -26,11 +26,14 @@ function App() {
       cartItems.map((item)=> item.id ===product.id ? {...ProductExist, quantity:ProductExist.quantity -1} :item)
     )}
   }
+  const handleCartClearance= () =>{
+    setCartItems([]);
+  }
 
   return (<div>
-    <Router>
-    <Header/>  
-    <RoutesComp productItems={itemList} cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct}/>
+    <Router >
+    <Header cartItems={cartItems}/>  
+    <RoutesComp productItems={itemList} cartItems={cartItems} handleAddProduct={handleAddProduct} handleRemoveProduct={handleRemoveProduct} handleCartClearance={handleCartClearance}/>
     </Router>
     </div>)
 }

@@ -14,6 +14,7 @@ const Products = ({itemList, handleAddProduct}) => {
             </div>
             <div>
                 <h3 className="product.name">{productItem.name}</h3>
+                <p>{productItem.description}</p>
             </div> 
 
            <div className="product-price">${productItem.price}</div>
