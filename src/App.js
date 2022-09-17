@@ -5,7 +5,6 @@ import {BrowserRouter as Router} from "react-router-dom";
 import RoutesComp from "./components/Routes";
 import { useState } from "react";
 
-
 function App() {
   // const [productItems] = {itemList}; destructuring is for separing elements within
   const [cartItems, setCartItems]=useState([])

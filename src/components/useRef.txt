@@ -1,0 +1,77 @@
+useRef
+
+O useRef te permite:
+
+    Acessar um elemento do DOM.
+    Armazenar um valor imutável durante o ciclo de vida do componente.
+
+Seu valor é acessado por .current:
+
+const time = useRef(0);
+console.log(time.current); // 0;
+
+Acessando um elemento do DOM.
+
+import { useRef, useEffect } from 'react';
+
+export default function Component() {
+  const textRef = useRef(null);
+  useEffect(() => {
+    if (textRef) {
+      const elementWidth = textRef.current.offsetWidth;
+    }
+  }, [textRef]);
+
+  return <p ref={textRef}>Exemplo de texto</p>;
+}
+
+Delay effect
+
+Você pode usar o useRef pra criar um delay de x segundos pra chamar uma função, por exemplo, quando usuário termina de digitar um campo para não sobrecarregar sua API com várias requisições cada vez que ele digita ou apaga uma letra.
+
+import { useRef, useEffect, useRef, useState } from 'react';
+
+export default function Form() {
+  const [text, setText] = useState('');
+  const timeToCallSomething = useRef(null);
+
+  const fetchSomething = () => {
+    // Realiza alguma requisição http.
+  };
+
+  useEffect(() => {
+    if (timeToCallSomething.current) {
+      clearInterval(timeToCallSomething.current);
+    }
+    timeToCallSomething.current = setTimeout(fetchSomething, 1000);
+    return () => clearInterval(timeToCallSomething.current);
+  }, [text]);
+
+  const onChangeHandler = ({ target: { value } }) => {
+    setText(value);
+  };
+
+  return <input value={text} onChange={onChangeHandler} />;
+}
+
+Passando ref via props
+
+Se você quiser passar uma ref para utilizar num componente filho via props, você precisará usar o método React.forwardRef do React no componente filho para receber essa ref como segundo parâmetro do componente.
+
+import { useRef, useEffect, forwardRef } from 'react';
+
+export default function Parent() {
+  const childRef = useRef(null);
+
+  return <Text ref={childRef} />;
+}
+
+const Text = forwardRef((props, ref) => {
+  return <p ref={ref}>Exemplo de texto</p>;
+});
+
+//////////////////////////////////////////////////////////////////////
+A SENHA PRECISA SER FORMATADA CORRETAMENTE OU N ENVIA PRO FIREBASE, 123 não é senha
+
+/////////////////////////////////////////////////////////////////////////
+A sintaxe do useState é const []
