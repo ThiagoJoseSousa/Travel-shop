@@ -40,7 +40,8 @@ const Signup= ()=>{
 
     return (
         <div className='signup'>
-            <div>Currently logged in as: {currentUser?.email}</div>
+            {currentUser? <div>Currently logged in as: {currentUser.email}</div> : <div>You need to log in!</div>}
+
 
             {!currentUser &&
             <>
@@ -55,7 +56,7 @@ const Signup= ()=>{
             }
 
         {currentUser && <>
-            <Profile/>
+            <Profile/> 
             <button disabled= {loading || !currentUser} onClick={handleLogout} >Log out</button>
             </>}
         </div>

@@ -75,3 +75,15 @@ A SENHA PRECISA SER FORMATADA CORRETAMENTE OU N ENVIA PRO FIREBASE, 123 não é 
 
 /////////////////////////////////////////////////////////////////////////
 A sintaxe do useState é const []
+
+Another method for conditionally rendering elements inline is to use the JavaScript conditional operator condition ? true : false.
+
+In the example below, we use it to conditionally render a small block of text.
+
+render() {
+  const isLoggedIn = this.state.isLoggedIn;
+  return (
+    <div>
+      The user is <b>{isLoggedIn ? 'currently' : 'not'}</b> logged in.    </div>
+  );
+}

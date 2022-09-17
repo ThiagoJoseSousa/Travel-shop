@@ -26,8 +26,9 @@ useEffect(()=>{
     
     <div className="fields">
 <input type="file" onChange={handleChange}/>
+
 <button disabled={loading || !photo} onClick={handleClick}>Upload</button>
-<img src={photoURL} alt="avatar" className="avatar"/>
+<img src={photoURL} alt="avatar" className="avatar"/> <br/>
     </div>
 )
 }
